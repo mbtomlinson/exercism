@@ -43,16 +43,17 @@ def say(number):
             '8': 'eighty',
             '9': 'ninety',
             }
-    
-    if digits == 1:
-        output = ones[num_string]
-    elif digits == 2:
-        if num_string[0] == '1':
-            output = ten_teens[num_string]
-        else:
-            output = tens[num_string[0]] + '-' + ones[num_string[1]]
-    return output
+    #Apply the below logic to elements of the num_list to create a list of
+    #outputs sans their 'magnitude'
+    #TODO: eliminate leading zeroes from elements of num_list
+        digits = len(num_string)
+        if digits == 1:
+            output = ones[num_string]
+        elif digits == 2:
+            if num_string[0] == '1':
+                output = ten_teens[num_string]
+            else:
+                output = tens[num_string[0]] + '-' + ones[num_string[1]]
+        return output
 
-#Use recursion
-#Do digits %3 at each level of magnitude
 
