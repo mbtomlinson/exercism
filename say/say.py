@@ -1,10 +1,17 @@
-import re
-
 def say(number):
-    if i not in list(range(10)).append('e') for i in list(number):
-        raise AttributeError('Invalid input')
+    if  type(number) is not int:
+        raise AttributeError('Input must be an integer')
+    num_string = str(number)
+    digits = len(num_string)
+    thousands = digits // 3
+    num_list = []
+    if (digits%3!=0):
+        num_list.append(num_string[0:digits%3])
+    for i in range(thousands):
+        num_list.append(num_string[(digits%3)+(3*i):(digits%3)+(3*i)+3])
     output = ''
-    ones = {'1':'one',
+    ones = {
+               '1':'one',
                '2': 'two',
                '3': 'three',
                '4': 'four',
@@ -37,12 +44,15 @@ def say(number):
             '9': 'ninety',
             }
     
-    if len(number) == 1:
-        output = ones[number]
-    elif len(number) == 2:
-        if number[0] == '1':
-            output = ten_teens[number]
+    if digits == 1:
+        output = ones[num_string]
+    elif digits == 2:
+        if num_string[0] == '1':
+            output = ten_teens[num_string]
         else:
-            output = tens[number[0]] + '-' + ones[number[1]]
+            output = tens[num_string[0]] + '-' + ones[num_string[1]]
     return output
+
+#Use recursion
+#Do digits %3 at each level of magnitude
 
